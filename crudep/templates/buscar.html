@@ -1,0 +1,27 @@
+
+    <div class="container">
+    <!--<h2>Login</h2>-->
+    <form method="GET">
+        {% csrf_token %}
+        <div class="github_user">
+        <label for="github_user">PLACA:</label>
+        <input type="text" class="form-control" id="numplaca" placeholder="Digite su placa" name="numplaca">
+        {% comment %} <input type="hidden" class="form-control" id="user" value="{{user.username}}" name="user"> {% endcomment %}
+        </div>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Buscar</button>
+        <div class="modal-body">
+            {% if qryplaca %}
+            <ul>
+            {% for c in qryplaca%}
+            <li>
+            <h3>La placa {{c.colplaca}} puede ser retirada</h3>
+            
+            </li>
+            {% endfor%}
+            </ul>
+            {% else %}
+            <h3> No se ha encontrado la placa </h3>
+            {% endif %}
+        </div>
+    </form>
+    </div>
